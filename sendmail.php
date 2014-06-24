@@ -12,6 +12,7 @@
 * $to : destination Email
 * $from : source email
 * $subject : Email Subject
+* 
 */
 function sendMailAttachment($to,$from,$subject){
 	
@@ -62,12 +63,56 @@ function sendMailAttachment($to,$from,$subject){
 }
 
 /*
+* sendMailHTML : Send Email with HTML Embedded (e.g Image here))
+*
+* $toEmail : destination Email
+* $fromEmail : source email
+* $subjectEmail : Email Subject
+*
+*/
+function sendMailHTML($fromEmail,$subjectEmail,$toEmail){
+	
+	$submobile = "Satish";
+	$subemail = "Satish";
+	$subuser = "Satish";
+	$name = "Satish";
+	$url = "";
+	$from  = 'MIME-Version: 1.0' . "\r\n";
+	$from .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+	$from .= "From: ".$fromEmail."\r\n";
+	$subject = $subjectEmail;
+	$to= $toEmail; 
+	$tbl = "
+	<html>
+		<head>
+			<title>Enquiry for budget</title>
+		</head>
+		<body>
+			<table width='500px' border='0' cellspacing='0' cellpadding='10' bgcolor='#000000'>"
+			."<tr>"
+				."<td><a href=''><img src='' height='53' width='301' border='0' /></a></td>"
+			."</tr>"
+			."<tr>"
+				."<td style='color:#FFF; font-size:12px;'>"
+					."Dear ".$name.", We have just recieved new enquiry for <a href='".$url."'>".$url."</a><br>"
+					."<br> Recieved information <br>Name: ".ucfirst($subuser).". <br>Email: ".$subemail.". <br>Contact number: ".$submobile.". <br>Enquiry about: hello testing. <br>Enquiry on URL: <a href='".$url."'>".$url."</a>."
+				."</td>"
+			."</tr>"
+			."</table>"
+		."</body>"
+	."</html>";
+	return mail($to,$subject,$tbl,$from);
+}
+
+
+/*
 * sendMailEmbededWithAttachment : Send Email with file as an attachment and image as embedded(e.g Image here))
 *
 * $toEmail : destination email
 * $subjectEmail : Email subject
 * $from : source email
 * $bcc = Bcc Email.. comma seperated list
+*
 */
 function sendMailEmbededWithAttachment($toEmail, $subjectEmail, $from, $bcc){
 	
@@ -134,6 +179,6 @@ EOBODY;
 
 	// Finally, send the email
 	echo mail($to, $subject, $body, $headers);
-//}
+}
 
 ?>
