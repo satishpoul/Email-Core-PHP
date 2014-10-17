@@ -7,4 +7,4 @@ Email functionality in core php
 
 2) Function sendMailAttachment to send Email with Embedded Image/HTML + Attachment.
 
-3) Function sendMailHTML to send Email with HTML Body without any Attachment. 
+3) Function sendMailEmbededWithAttachment to send Email with HTML Body without any Attachment. 
